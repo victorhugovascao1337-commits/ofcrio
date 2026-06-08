@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="/funnel-tracking.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correios | Rastreamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="stylesheet" href="../../Correios%20_%20Rastreio_arquivos/bootstrap.css">
+    <link rel="stylesheet" href="../../Correios%20_%20Rastreio_arquivos/app.css">
+    <link rel="stylesheet" href="../../Correios%20_%20Rastreio_arquivos/yellow.css">
+    <link rel="stylesheet" href="../../Correios%20_%20Rastreio_arquivos/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .breadcrumb {
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #856404;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #721c24;
+        }
+        .status-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .status-badge.warning {
+            background-color: #ffc107;
+            color: #333;
+        }
+        .warning-icon {
+            color: #dc3545;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .payment-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .payment-button:hover {
+            background-color: #0052a3;
+        }
+        .tracking-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .tracking-image img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background-color: #fffacd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .phishing-analysis {
+            background-color: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+        .phishing-analysis h4 {
+            color: #17a2b8;
+            margin-top: 0;
+        }
+        .phishing-analysis ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .phishing-analysis li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="w-100 font-size-16 font-weight-400 text-blue">
+        <div class="w-100 bg-grey px-3 px-lg-3 py-1 border-bottom border-white">
+            <span>Acessibilidade</span>
+            <i class="fas fa-caret-down ml-1"></i>
+        </div>
+        <nav class="w-100 d-flex align-items-center bg-grey-2 px-3 px-lg-3 py-1 border-bottom border-warning" style="height:48px">
+            <div class="menu-toggle" id="menu-toggle" style="width:50px">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="ml-0 ml-lg-1 d-flex justify-content-center" style="width:100%">
+                <a href="#" class="py-2">
+                    <img src="../../Correios%20_%20Rastreio_arquivos/correios.png" alt="Correios" height="25">
+                </a>
+            </div>
+            <div class="ml-4 d-none d-lg-block" style="width:150px">
+                <a href="#" class="py-1 text-blue-dark border-left border-secondary px-3 text-decoration-none">
+                    <img src="../../Correios%20_%20Rastreio_arquivos/entrar.svg" alt="Correios" width="31">
+                    <span class="ml-1">Entrar</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="breadcrumb" style="background-color: transparent; padding-left: 0;">
+            <a href="#" class="text-blue">Portal Correios</a>
+            <span class="mx-2">›</span>
+            <a href="#" class="text-blue">Rastreamento</a>
+            <span class="mx-2">›</span>
+            <span class="text-blue" id="cpfDisplay">200.790.517-58</span>
+        </nav>
+
+        <div class="alert-danger" style="margin-top: 30px;">
+            <i class="fas fa-exclamation-triangle warning-icon"></i>
+            <strong>SUA ENCOMENDA FOI TRIBUTADA!</strong>
+        </div>
+
+        <div class="status-section">
+            <div class="status-title">STATUS DA ENTREGA:</div>
+            <div class="status-badge warning">
+                <i class="fas fa-circle" style="font-size: 8px; margin-right: 5px;"></i>
+                AGUARDANDO PAGAMENTO
+            </div>
+
+            <p style="margin-top: 20px; color: #333;">
+                Sua encomenda está retida na agência dos correios Nova Iguaçu
+            </p>
+
+            <p style="color: #666; margin-top: 15px;">
+                Para liberar o envio do seu produto. O pagamento deve ser feito clicando no botão abaixo:
+            </p>
+
+            <button class="payment-button">
+                CLIQUE AQUI PARA LIBERAÇÃO DO SEU PEDIDO
+            </button>
+        </div>
+
+        <div class="tracking-image">
+            <img src="../../Correios%20_%20Rastreio_arquivos/banner-1.jpg" alt="Imagem de rastreamento" style="max-width: 500px;">
+        </div>
+
+        <!-- AVISO EDUCACIONAL - ANÁLISE DE PHISHING -->
+        <div class="phishing-analysis">
+            <h4>⚠️ ANÁLISE EDUCACIONAL - ELEMENTOS DE PHISHING DETECTADOS</h4>
+            <p><strong>Esta página é um exemplo de ataque de phishing para fins educacionais (TCC)</strong></p>
+
+            <h5>Técnicas de Engenharia Social Identificadas:</h5>
+            <ul>
+                <li><strong>Impersonação de marca legítima:</strong> Usa logo, layout e estilo dos Correios oficiais</li>
+                <li><strong>Criação de urgência:</strong> "SUA ENCOMENDA FOI TRIBUTADA!" em letras vermelhas</li>
+                <li><strong>Pressão psicológica:</strong> Status "AGUARDANDO PAGAMENTO" com ícone de alerta</li>
+                <li><strong>Localização falsa:</strong> Menciona agência específica (Nova Iguaçu) para parecer real</li>
+                <li><strong>CTA enganosa:</strong> Botão azul destacado induz clique para domínio malicioso</li>
+                <li><strong>Documentação falsa:</strong> Imagem de comprovante com QR code faz parecer oficial</li>
+                <li><strong>Redirecionamento oculto:</strong> Links apontam para domínio pay.libiere-sua-entrega.online</li>
+            </ul>
+
+            <h5>Como Identificar:</h5>
+            <ul>
+                <li>URL real dos Correios: <code>www.correios.com.br</code></li>
+                <li>Domínio suspeito: <code>libiera-sua-entrega.online</code></li>
+                <li>Nunca há "tributação" súbita por email/link</li>
+                <li>Solicitar pagamento via link é sempre suspeito</li>
+                <li>Correios não pedem pagamento desta forma</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="d-flex flex-wrap px-5 py-4 bg-yellow text-blue-dark w-100">
+        <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+            <h5 class="font-weight-700 mb-4">Fale Conosco</h5>
+            <ul style="list-style: none; padding: 0;">
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-desktop"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Registro de Manifestações</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-question-circle"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Central de Atendimento</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-briefcase"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Solucões para o seu negócio</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-headset"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Suporte ao cliente com contrato</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-comments"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span>Ouvidoria</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+            <h5 class="font-weight-700 mb-4">Sobre os Correios</h5>
+            <ul style="list-style: none; padding: 0;">
+                <li class="mb-2 font-size-14">
+                    <i class="far fa-address-card"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span>Identidade colaborativa</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-graduation-cap"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span>Educação e cultura</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-book"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span>Código de ética</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-file"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Transparência e prestação de contas</span>
+                    </a>
+                </li>
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-file-pdf"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Política de privacidade e Notas legais</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+            <h5 class="font-weight-700 mb-4">Outros Sites</h5>
+            <ul style="list-style: none; padding: 0;">
+                <li class="mb-2 font-size-14">
+                    <i class="fas fa-shopping-cart"></i>
+                    <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+                        <span class="text-wrap">Loja online dos correios</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Extrair parâmetros da URL
+        function obterParametros() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                cpf: params.get('cpf') || '-',
+                nome: params.get('nome') || 'Cliente'
+            };
+        }
+
+        // Formatar CPF
+        function formatarCPF(cpf) {
+            cpf = cpf.toString().replace(/\D/g, '');
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        // Inicializar página
+        function inicializar() {
+            const dados = obterParametros();
+            const cpfFormatado = formatarCPF(dados.cpf);
+            document.getElementById('cpfDisplay').textContent = cpfFormatado;
+        }
+
+        window.addEventListener('DOMContentLoaded', inicializar);
+
+        // Desabilitar o botão de pagamento (não deve funcionar em versão educacional)
+        document.querySelector('.payment-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Este é um exemplo educacional de phishing para fins de TCC.\n\nNUNCA clique em links de pagamento de emails ou SMS desconhecidos!\n\nPara rastrear suas encomendas, acesse: www.correios.com.br');
+        });
+    </script>
+</body>
+</html>

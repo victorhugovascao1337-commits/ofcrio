@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "checkout/server.js", "use": "@vercel/node" },
+    { "src": "1/**", "use": "@vercel/static" },
+    { "src": "2/**", "use": "@vercel/static" },
+    { "src": "3/**", "use": "@vercel/static" },
+    { "src": "funnel-tracking.js", "use": "@vercel/static" },
+    { "src": "checkout/public/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/checkout/server.js" },
+    { "src": "/checkout", "status": 308, "headers": { "Location": "/checkout/" } },
+    { "src": "/checkout/", "dest": "/checkout/public/index.html" },
+    { "src": "/checkout/(.+)", "dest": "/checkout/public/$1" },
+    { "src": "/", "status": 308, "headers": { "Location": "/1/index.html" } },
+    { "handle": "filesystem" }
+  ]
+}

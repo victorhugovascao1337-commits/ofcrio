@@ -1,0 +1,16 @@
+node_modules/
+checkout/node_modules/
+
+# Segredos — nunca versionar
+.env
+.env.*
+!.env.example
+checkout/.env
+checkout/.env.*
+!checkout/.env.example
+
+.vercel
+
+# Config local de ferramentas (não faz parte do app)
+.claude/
+**/.claude/

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Seguro - Pagamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .educational-warning {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #17a2b8;
+        }
+
+        .educational-warning h4 {
+            margin-bottom: 10px;
+            color: #17a2b8;
+        }
+
+        .educational-warning ul {
+            margin-left: 20px;
+        }
+
+        .educational-warning li {
+            margin: 5px 0;
+        }
+
+        .payment-methods {
+            margin-top: 22px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: var(--blue);
+            background: #f9fafb;
+        }
+
+        .payment-option.selected {
+            border-color: var(--blue);
+            background: #eff6ff;
+        }
+
+        .payment-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 12px;
+        }
+
+        .badge-seguro {
+            background: var(--green);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .trust-badges-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .badge-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .badge-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-bottom: 6px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGO -->
+    <div class="logo-wrap">
+        <div class="logo-card">
+            <div class="logo">
+                <i class="fas fa-lock" style="color: var(--blue); font-size: 32px;"></i>
+                <div class="logo-text">Pagamento<br><strong>Seguro</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <div class="layout">
+        <!-- COLUNA ESQUERDA -->
+        <div class="col-left">
+            <!-- IDENTIFICAÇÃO -->
+            <div class="card">
+                <h2 class="card-title">Identificação Pessoal</h2>
+
+                <form id="checkoutForm">
+                    <div class="field">
+                        <label>Email *</label>
+                        <input type="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="field">
+                            <label>Telefone *</label>
+                            <input type="tel" name="phone" placeholder="(11) 99999-9999" required>
+                        </div>
+                        <div class="field">
+                            <label>CPF *</label>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" readonly>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Nome Completo *</label>
+                        <input type="text" id="name" name="name" placeholder="Seu Nome Completo" readonly>
+                    </div>
+
+                    <!-- PAGAMENTO -->
+                    <div class="payment-methods">
+                        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Método de Pagamento</h3>
+
+                        <label class="payment-option selected">
+                            <input type="radio" name="payment" value="pix" checked onchange="updatePaymentMethod()">
+                            <div>
+                                <strong>PIX</strong>
+                                <div style="font-size: 12px; color: var(--muted);">Transferência instantânea</div>
+                            </div>
+                            <div class="badge-seguro">0% OFF</div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card" onchange="updatePaymentMethod()">
+                            <div>
+                                <strong>Cartão de Crédito</strong>
+                                <div style="font-size: 12px; color: var(--muted);">Parcelado em até 12x</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="pix-info">
+                        <strong>Como funciona?</strong><br>
+                        Gere um código PIX, copie e cole no seu banco. O pagamento é instantâneo e seguro.
+                    </div>
+
+                    <!-- ANÁLISE EDUCACIONAL -->
+                    <div class="educational-warning">
+                        <h4>⚠️ ANÁLISE EDUCACIONAL - SINAIS DE PHISHING</h4>
+                        <ul>
+                            <li><strong>Formulário pede CPF:</strong> Sites legítimos não solicitam CPF em checkout</li>
+                            <li><strong>Sensação de urgência:</strong> "Pagamento gerado, caso não conclua..."</li>
+                            <li><strong>Badges de segurança falsos:</strong> Para parecer confiável</li>
+                            <li><strong>URL suspeita:</strong> Domínio diferente do site oficial</li>
+                            <li><strong>Falta de CNPJ/informações legais:</strong> Em rodapé</li>
+                            <li><strong>Redireciona para site externo:</strong> Em vez de processar localmente</li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- COLUNA DIREITA (CARRINHO) -->
+        <div class="col-right">
+            <div class="card">
+                <div class="cart-head">
+                    <h3 class="card-title">Resumo do Pedido</h3>
+                    <div class="cart-badge">1</div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="cart-thumb">
+                        <i class="fas fa-lock" style="color: var(--green);"></i>
+                    </div>
+                    <div class="cart-info">
+                        <strong>Taxa de Liberação</strong>
+                        <span>ID 746397</span>
+                    </div>
+                    <div>R$ 47,59</div>
+                </div>
+
+                <div class="cart-line">
+                    <span>Subtotal</span>
+                    <span>R$ 47,59</span>
+                </div>
+
+                <div class="cart-line total">
+                    <span>Total</span>
+                    <span>R$ 47,59</span>
+                </div>
+
+                <button class="btn-gerar" onclick="handleCheckout()">
+                    <i class="fas fa-lock"></i> Gerar Código PIX
+                </button>
+
+                <div class="trust-badges-grid">
+                    <div class="badge-item">
+                        <i class="fas fa-shield-alt"></i>
+                        SSL Seguro
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-lock"></i>
+                        Criptografado
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-check-circle"></i>
+                        Verificado
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-eye"></i>
+                        Monitorado
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEGURO -->
+            <div class="seguro">
+                <i class="fas fa-lock" style="color: var(--green);"></i>
+                Ambiente 100% Seguro
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div style="margin-top: 20px;">
+            <i class="fas fa-lock" style="color: var(--green); font-size: 24px;"></i>
+            <p style="margin-top: 10px;">Seus dados estão protegidos com encriptação SSL 256-bit</p>
+            <p class="copy">&copy; 2024 Pagamento Seguro. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <script>
+        // Extrair parâmetros da URL
+        function obterParametros() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                cpf: params.get('cpf') || '',
+                name: params.get('name') || ''
+            };
+        }
+
+        function formatarCPF(cpf) {
+            cpf = cpf.toString().replace(/\D/g, '');
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        function inicializar() {
+            const dados = obterParametros();
+
+            if (dados.cpf) {
+                document.getElementById('cpf').value = formatarCPF(dados.cpf);
+            }
+
+            if (dados.name) {
+                document.getElementById('name').value = decodeURIComponent(dados.name);
+            }
+        }
+
+        function updatePaymentMethod() {
+            const options = document.querySelectorAll('.payment-option');
+            options.forEach(opt => {
+                if (opt.querySelector('input[type="radio"]:checked')) {
+                    opt.classList.add('selected');
+                } else {
+                    opt.classList.remove('selected');
+                }
+            });
+        }
+
+        function handleCheckout() {
+            alert('Este é um exemplo educacional de checkout malicioso para fins de TCC.\n\nNUNCA insira dados pessoais em sites de checkout desconhecidos!\n\nSinais de alerta:\n✗ Solicita CPF sem razão\n✗ URL suspeita\n✗ Pressa/urgência artificial');
+        }
+
+        window.addEventListener('DOMContentLoaded', inicializar);
+    </script>
+</body>
+</html>

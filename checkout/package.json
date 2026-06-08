@@ -1,0 +1,15 @@
+{
+  "name": "carhub-checkout",
+  "version": "1.0.0",
+  "description": "Checkout Pix - CarHub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "qrcode": "^1.5.4"
+  }
+}

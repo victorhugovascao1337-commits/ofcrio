@@ -1,0 +1,13 @@
+# Dependências (o Vercel reinstala a partir do package.json)
+node_modules
+checkout/node_modules
+
+# Segredos — NUNCA subir. Configure como Environment Variables no painel do Vercel.
+.env
+.env.*
+checkout/.env
+checkout/.env.*
+
+# Git / Vercel local
+.git
+.vercel

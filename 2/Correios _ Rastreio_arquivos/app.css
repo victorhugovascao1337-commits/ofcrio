@@ -1,0 +1,172 @@
+/* background */
+.bg-black {
+  background-color: #000000;
+}
+.bg-blue-dark {
+  background-color: #003869;
+}
+.bg-grey {
+  background-color: #EFEDEA;
+}
+.bg-grey-2 {
+  background-color: #F5F3F0;
+}
+.bg-grey-3 {
+  background-color: #E9ECEF;
+}
+.bg-yellow {
+  background-color: #FFE600;
+
+}
+/* Opacity*/
+.opacity-0 {
+  opacity: 0;
+}
+/* Shadow */
+.box-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Fonts */
+.font-size-54 {
+  font-size: 54px!important;
+}
+.font-size-48 {
+  font-size: 48px!important;
+}
+.font-size-40 {
+  font-size: 40px!important;
+}
+.font-size-32 {
+  font-size: 32px!important;
+}
+.font-size-24 {
+  font-size: 24px!important;
+}
+.font-size-20 {
+  font-size: 20px!important;
+}
+.font-size-18 {
+  font-size: 18px!important;
+}
+.font-size-16 {
+  font-size: 16px!important;
+}
+.font-size-14 {
+  font-size: 14px!important;
+}
+.font-size-13 {
+  font-size: 13px!important;
+}
+.font-size-12 {
+  font-size: 12px!important;
+}
+.font-size-10 {
+  font-size: 10px!important;
+}
+.font-size-8 {
+  font-size: 8px!important;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+.text-decoration-none {
+  text-decoration: none;
+}
+.text-decoration-none:hover {
+  text-decoration: none;
+}
+
+@media (min-width: 993px) {
+  .font-size-lg-54 {
+    font-size: 54px!important;
+  }
+  .font-size-lg-48 {
+    font-size: 48px!important;
+  }
+  .font-size-lg-40 {
+    font-size: 40px!important;
+  }
+  .font-size-lg-32 {
+    font-size: 32px!important;
+  }
+  .font-size-lg-24 {
+    font-size: 24px!important;
+  }
+}
+
+/* Buttons */
+.btn-rounded {
+  border-radius: 30px;
+}
+.btn-black {
+  background-color: #000000;
+  color: #ffffff;
+  line-height: 16px;
+}
+.btn-black:hover {
+  background-color: #212529;
+  color: #ffffff!important;
+}
+.btn-white {
+  background-color: #ffffff;
+  color: #000000!important;
+  line-height: 16px;
+}
+.btn-white:hover {
+  background-color: #fafafa;
+  color: #000000!important;
+}
+
+/* Width */
+.w-95 {
+  width: 95%;
+}
+.w-80 {
+  width: 70%;
+}
+.w-70 {
+  width: 70%;
+}
+.w-60 {
+  width: 60%;
+}
+.w-40 {
+  width: 40%;
+}
+.w-30 {
+  width: 32%;
+}
+.max-w-1000 {
+  max-width: 994px;
+}
+.min-w-300 {
+  min-width: 300px;
+}
+@media (min-width: 993px) {
+  .w-lg-100 {
+    width: 100%!important;
+  }
+  .w-lg-75 {
+    width: 75%!important;
+  }
+  .w-lg-70 {
+    width: 70%!important;
+  }
+  .w-lg-50 {
+    width: 50%!important;
+  }
+  .w-lg-30 {
+    width: 32%!important;
+  }
+}
+
+

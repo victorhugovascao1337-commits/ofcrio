@@ -514,6 +514,21 @@ app.get("/api/pix/status/:txid", async (req, res) => {
   }
 });
 
+/**
+ * ROTAS PARA UPSELLS E SUCCESS
+ */
+app.get("/upsell1", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "upsell1.html"));
+});
+
+app.get("/upsell2", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "upsell2.html"));
+});
+
+app.get("/success", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "success.html"));
+});
+
 // Em ambiente local roda como servidor próprio (node server.js).
 // No Vercel (serverless) o arquivo é apenas importado — sem app.listen.
 if (require.main === module) {

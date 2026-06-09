@@ -245,7 +245,16 @@ function iniciarChecagem(txid, valor) {
           }, { eventID: txid });
         }
 
-        alert("✅ Pagamento confirmado!");
+        // Redireciona para o upsell1, levando os dados do cliente para
+        // gerar o PIX das próximas ofertas sem pedir tudo de novo.
+        const params = new URLSearchParams({
+          txid: txid,
+          nome: document.getElementById("name").value.trim(),
+          cpf: cpfInput.value.trim(),
+          email: emailInput.value.trim(),
+          tel: telInput.value.trim()
+        });
+        window.location.href = `/upsell1?${params.toString()}`;
       }
     } catch (_) {}
   }, 5000);

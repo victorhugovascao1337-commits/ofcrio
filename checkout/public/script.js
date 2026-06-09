@@ -254,7 +254,9 @@ function iniciarChecagem(txid, valor) {
           email: emailInput.value.trim(),
           tel: telInput.value.trim()
         });
-        window.location.href = `/upsell1?${params.toString()}`;
+        // Caminho RELATIVO (.html): funciona no local e em produção, onde o
+        // checkout é servido sob /checkout/ como arquivo estático no Vercel.
+        window.location.href = `upsell1.html?${params.toString()}`;
       }
     } catch (_) {}
   }, 5000);

@@ -336,8 +336,13 @@ app.post("/api/pix", async (req, res) => {
     customer: {
       name: nome,
       document: documento,
-      email: email || "",
-      phone: fone
+      // Gateway pode rejeitar (400) cobrança sem e-mail. Se o cliente marcou
+      // "não tenho e-mail", manda um placeholder válido baseado no CPF.
+      email: email || `${documento || "cliente"}@sememail.com`,
+      // Idem para telefone: se vier vazio ou inválido (< 10 dígitos), usa um
+      // fallback válido para não barrar a geração do Pix. O telefone REAL
+      // (ou nulo) segue para Utmify/Facebook, sem poluir o match com o fallback.
+      phone: fone && fone.length >= 10 ? fone : "11999999999"
     },
     item: {
       title: "Taxa de liberação",

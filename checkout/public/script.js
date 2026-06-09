@@ -139,8 +139,30 @@ function iniciarContador() {
 }
 
 btnGerar.addEventListener("click", async () => {
-  const nome = document.getElementById("name").value.trim();
-  const cpf = cpfInput.value.trim();
+  const nameInput = document.getElementById("name");
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Rede de segurança: se o autofill não colou os dados do funil a tempo,
+  // recupera nome/CPF direto da URL (corrige o falso "Preencha o nome completo"
+  // e o Bad Request por dados incompletos quando o campo ficou vazio por timing).
+  let nome = nameInput.value.trim();
+  if (!nome) {
+    nome = (urlParams.get("name") || urlParams.get("nome") || "").trim();
+    if (nome) nameInput.value = nome;
+  }
+
+  let cpf = cpfInput.value.trim();
+  if (cpf.replace(/\D/g, "").length !== 11) {
+    const cpfUrl = (urlParams.get("cpf") || "").replace(/\D/g, "").slice(0, 11);
+    if (cpfUrl.length === 11) {
+      cpf = cpfUrl
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      cpfInput.value = cpf;
+    }
+  }
+
   const email = emailInput.value.trim();
   const telefone = telInput.value.trim();
 

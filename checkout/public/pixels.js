@@ -12,7 +12,7 @@
   "use strict";
 
   // ---- Pixel da Utmify ----
-  window.pixelId = "6a267151f9e57e3608f6ce7c";
+  window.pixelId = "6a28f3772ce841e626b8604a";
   var u = document.createElement("script");
   u.setAttribute("async", "");
   u.setAttribute("defer", "");
@@ -29,6 +29,6 @@
     t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
   }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
-  window.fbq("init", "1168881985393738");
+  window.fbq("init", "1725854511770851");
   window.fbq("track", "PageView");
 })();

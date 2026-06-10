@@ -152,12 +152,18 @@
   }
 
   function iniciarChecagem(txid) {
-    const intervalo = setInterval(async () => {
+    let finalizado = false;
+
+    async function checar() {
+      if (finalizado) return;
       try {
         const r = await fetch(`/api/pix/status/${encodeURIComponent(txid)}`);
         const d = await r.json();
-        if (d.status === "COMPLETED") {
+        if (d.status === "COMPLETED" && !finalizado) {
+          finalizado = true;
           clearInterval(intervalo);
+          document.removeEventListener("visibilitychange", aoVoltar);
+          window.removeEventListener("focus", checar);
 
           // Facebook: venda do upsell confirmada
           if (window.fbq) {
@@ -168,7 +174,15 @@
           setTimeout(() => { window.location.href = urlProximaEtapa(); }, 800);
         }
       } catch (_) {}
-    }, 5000);
+    }
+
+    // Checa também no instante em que o cliente volta pra aba (após pagar no banco).
+    const aoVoltar = () => { if (document.visibilityState === "visible") checar(); };
+
+    const intervalo = setInterval(checar, 3000);
+    document.addEventListener("visibilitychange", aoVoltar);
+    window.addEventListener("focus", checar);
+    checar();
   }
 
   // ---- Inicialização ----

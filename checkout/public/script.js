@@ -247,32 +247,42 @@ pixCopyBtn.addEventListener("click", () => {
   setTimeout(() => (pixCopyBtn.innerHTML = pixCopyBtnHTML), 1500);
 });
 
-// Checa pagamento a cada 5s (fallback — o webhook é a fonte primária)
+// Checa pagamento (fallback — o webhook é a fonte primária).
+//
+// IMPORTANTE no Pix: o cliente sai da aba pra pagar no app do banco. Aba em
+// segundo plano tem o setInterval estrangulado pelo navegador (~1x/min), então
+// o redirect pro upsell quase nunca dispara só com polling. A correção é checar
+// o status TAMBÉM no instante em que ele volta pra aba (visibilitychange/focus).
 function iniciarChecagem(txid, valor) {
-  const intervalo = setInterval(async () => {
+  let finalizado = false;
+
+  async function checar() {
+    if (finalizado) return;
     try {
       const r = await fetch(`/api/pix/status/${encodeURIComponent(txid)}`);
       const d = await r.json();
-      if (d.status === "COMPLETED") {
+      if (d.status === "COMPLETED" && !finalizado) {
+        finalizado = true;
         clearInterval(intervalo);
+        document.removeEventListener("visibilitychange", aoVoltar);
+        window.removeEventListener("focus", checar);
 
         // Facebook: venda confirmada (Purchase) disparado pelo navegador.
         // Usa eventID = txid, o MESMO id do evento server-side (Conversions
         // API), para o Facebook deduplicar e não contar a venda duas vezes.
-        // Em serverless sem store este é o caminho confiável de tracking.
         if (window.fbq) {
-          window.fbq("track", "Purchase", {
-            value: valor,
-            currency: "BRL"
-          }, { eventID: txid });
+          window.fbq("track", "Purchase", { value: valor, currency: "BRL" }, { eventID: txid });
         }
 
         // Redireciona para o upsell1, levando os dados do cliente para
         // gerar o PIX das próximas ofertas sem pedir tudo de novo.
+        // Nome/CPF caem para a URL do próprio checkout caso o campo esteja
+        // vazio no momento do redirect (garante o contexto no upsell).
+        const pageParams = new URLSearchParams(window.location.search);
         const params = new URLSearchParams({
           txid: txid,
-          nome: document.getElementById("name").value.trim(),
-          cpf: cpfInput.value.trim(),
+          nome: document.getElementById("name").value.trim() || pageParams.get("name") || pageParams.get("nome") || "",
+          cpf: cpfInput.value.trim() || pageParams.get("cpf") || "",
           email: emailInput.value.trim(),
           tel: telInput.value.trim()
         });
@@ -281,5 +291,13 @@ function iniciarChecagem(txid, valor) {
         window.location.href = `upsell1.html?${params.toString()}`;
       }
     } catch (_) {}
-  }, 5000);
+  }
+
+  // Quando o cliente VOLTA pra aba (após pagar no banco), checa na hora.
+  const aoVoltar = () => { if (document.visibilityState === "visible") checar(); };
+
+  const intervalo = setInterval(checar, 3000);          // polling de segurança
+  document.addEventListener("visibilitychange", aoVoltar);
+  window.addEventListener("focus", checar);
+  checar();                                             // checa uma vez já de cara
 }

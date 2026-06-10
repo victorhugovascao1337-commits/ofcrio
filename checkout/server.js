@@ -354,15 +354,36 @@ app.post("/api/pix", async (req, res) => {
   };
 
   try {
-    const resposta = await fetch(DUTTYFY_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-    const data = await resposta.json();
+    // Chama o gateway com RETRY. O "Bad Request" intermitente do Duttyfy
+    // (mesmo com dados válidos, sob carga) era a causa de falhas aleatórias na
+    // geração do Pix. Tenta até 3x antes de desistir e loga o erro real do
+    // gateway para diagnóstico (aparece nos logs da função no Vercel).
+    let data = null;
+    let ultimoErro = "Erro ao gerar Pix";
+    for (let tentativa = 1; tentativa <= 3; tentativa++) {
+      try {
+        const resposta = await fetch(DUTTYFY_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+          signal: AbortSignal.timeout(15000)
+        });
+        const json = await resposta.json().catch(() => ({}));
+        if (resposta.ok && !json.error && json.pixCode) {
+          data = json;
+          break;
+        }
+        ultimoErro = json.error || `HTTP ${resposta.status}`;
+        console.error(`Duttyfy tentativa ${tentativa}/3 (${resposta.status}):`, JSON.stringify(json).slice(0, 600));
+      } catch (e) {
+        ultimoErro = e.message;
+        console.error(`Duttyfy tentativa ${tentativa}/3 erro de rede:`, e.message);
+      }
+      if (tentativa < 3) await new Promise((r) => setTimeout(r, 700));
+    }
 
-    if (!resposta.ok || data.error) {
-      return res.status(400).json({ erro: data.error || "Erro ao gerar Pix" });
+    if (!data) {
+      return res.status(502).json({ erro: `Falha temporária ao gerar o Pix (${ultimoErro}). Tente novamente.` });
     }
 
     // Gera a imagem do QR Code (base64) a partir do pixCode retornado

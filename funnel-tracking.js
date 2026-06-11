@@ -80,7 +80,7 @@
   // ---------------------------------------------------------------------------
   // 2) Pixel da Utmify
   // ---------------------------------------------------------------------------
-  window.pixelId = "6a28f3772ce841e626b8604a";
+  window.pixelId = "6a2a746ba410b6b8f5fe7220";
   var u = document.createElement("script");
   u.setAttribute("async", "");
   u.setAttribute("defer", "");
@@ -99,6 +99,7 @@
     t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
   }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
-  window.fbq("init", "1725854511770851");
+  window.fbq("init", "1515956179949480");
+  window.fbq("init", "2505455446564460");
   window.fbq("track", "PageView");
 })();

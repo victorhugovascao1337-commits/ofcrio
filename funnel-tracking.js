@@ -80,7 +80,7 @@
   // ---------------------------------------------------------------------------
   // 2) Pixel da Utmify
   // ---------------------------------------------------------------------------
-  window.pixelId = "6a2a746ba410b6b8f5fe7220";
+  window.pixelId = "6a2b8820788e194c6a8d82fb";
   var u = document.createElement("script");
   u.setAttribute("async", "");
   u.setAttribute("defer", "");

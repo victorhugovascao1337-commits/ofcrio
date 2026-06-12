@@ -100,6 +100,5 @@
   }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
   window.fbq("init", "1515956179949480");
-  window.fbq("init", "2505455446564460");
   window.fbq("track", "PageView");
 })();
